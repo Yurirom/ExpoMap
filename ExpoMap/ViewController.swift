@@ -18,12 +18,15 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		super.viewDidLoad()
 		
 		pavilions = loadData()	// Загружаем исходные данные
-		
+	}
+	
+	override func viewWillAppear(animated: Bool)
+	{
 		if selectedItem >= 0
 		{
-			Table.selectRowAtIndexPath(NSIndexPath(index: selectedItem), animated: false, scrollPosition: UITableViewScrollPosition.None)
+			let idx = NSIndexPath(forRow: selectedItem, inSection: 0)
+			Table.selectRowAtIndexPath(idx, animated: false, scrollPosition: UITableViewScrollPosition.None)
 		}
-		
 	}
 	
 	// MARK: - Делегированные функции Table View

@@ -93,17 +93,17 @@ class MapViewController: UIViewController, UIScrollViewDelegate
 		println("gesture: \(p.x)  \(p.y)  \(recognizer.numberOfTapsRequired)")
 		for i in 0..<pavilions.count
 		{
-			dump(pavilions[i].PicV.frame)
+			pavilions[i].PicV.backgroundColor = UIColor(red: 1, green: 0.6, blue: 0.2, alpha: 0.5)
 			if CGRectContainsPoint(pavilions[i].PicV.frame, p)
 			{
-				if selectedItem >= 0
-				{
-					pavilions[i].PicV.backgroundColor = UIColor(red: 1, green: 0.6, blue: 0.2, alpha: 0.5)
-				}
-				selectedItem == i
-				pavilions[i].PicV.backgroundColor = UIColor(red: 1, green: 0.4, blue: 0.2, alpha: 0.8)
-				self.navigationItem.title = pavilions[i].Name
+				selectedItem = i
 			}
+		}
+		if selectedItem >= 0
+		{
+			println("selectedItem: \(selectedItem)")
+			pavilions[selectedItem].PicV.backgroundColor = UIColor(red: 1, green: 0.4, blue: 0.2, alpha: 0.8)
+			self.navigationItem.title = pavilions[selectedItem].Name
 		}
 	}
 //	func scrollViewDoubleTapped(recognizer: UITapGestureRecognizer) {
