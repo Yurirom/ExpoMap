@@ -17,9 +17,8 @@ class MapViewController: UIViewController, UIScrollViewDelegate
 	
 	@IBOutlet weak var MapImageView: UIImageView!
 	
-	
-	
-//	var imageView: UIImageView!
+	let pavilionsColor = UIColor(red: 1, green: 0.6, blue: 0.6, alpha: 0.6)
+	let pavilionSelectedColor = UIColor(red: 1, green: 0.4, blue: 0.2, alpha: 0.8)
 	
 	override func viewDidLoad()
 	{
@@ -27,6 +26,10 @@ class MapViewController: UIViewController, UIScrollViewDelegate
 		
 		scrollView.contentSize = MapImageView.image!.size
 
+		//	Добавим 2 GestureRecognizer: одиночное нажатие - для выбора
+		//	объекта и двойного - для сброса масштаба и позиции карты
+		//	к исходному положению
+		
 		var tapRecognizer = UITapGestureRecognizer(target: self, action: "handleTap:")
 		tapRecognizer.numberOfTapsRequired = 1
 		tapRecognizer.numberOfTouchesRequired = 1
@@ -36,50 +39,40 @@ class MapViewController: UIViewController, UIScrollViewDelegate
 		doubleTapRecognizer.numberOfTouchesRequired = 1
 		scrollView.addGestureRecognizer(doubleTapRecognizer)
 		
+		//	Вычисляем поправочный коэффициент на координаты объектов, после того, как
+		//	исходную карту вписали в экран девайса
+		
 		let pscale = min(self.view.frame.size.width / MapImageView.image!.size.width, self.view.frame.size.height / MapImageView.image!.size.height)
 		
-		scrollView.minimumZoomScale = pscale
-		scrollView.maximumZoomScale = 5.0
-		scrollView.zoomScale = 1.0
+		//	Добавляем объекты на карту
 		
 		for i in 0..<pavilions.count
 		{
 			let W = pavilions[i].W * pscale
 			let H = pavilions[i].H * pscale
 			pavilions[i].PicV.frame.size = CGSize(width: W, height: H)
-			pavilions[i].PicV.backgroundColor = UIColor(red: 1, green: 0.6, blue: 0.2, alpha: 0.5)
+			pavilions[i].PicV.backgroundColor = pavilionsColor
 			if selectedItem == i
 			{
-				pavilions[i].PicV.backgroundColor = UIColor(red: 1, green: 0.4, blue: 0.2, alpha: 0.8)
+				pavilions[i].PicV.backgroundColor = pavilionSelectedColor
 			}
+			
 			ContentView.addSubview(pavilions[i].PicV)
 		}
 
-		setPavilionsPositions(self.view.frame.size)
-		
-		// 6
-		centerScrollViewContents()
-		
+		setPavilionsPositions(self.view.frame.size)	//	Позиционируем объекты на карте
 	}
+	
+	// MARK: - Если решили повращать девайс - корректируем позиции объектов
+	// MARK: -
 	
 	override func viewWillTransitionToSize(size: CGSize,
 		withTransitionCoordinator coordinator: UIViewControllerTransitionCoordinator)
 	{
-	//	Если решили повращать девайс - корректируем позиции объектов
 		setPavilionsPositions(size)
 	}
 	
-//	override func viewDidLayoutSubviews()
-//	{
-//		let scrollViewBounds = scrollView.bounds
-//		
-//		var scrollViewInsets = UIEdgeInsetsZero
-////		scrollViewInsets.top = 64
-////		scrollViewInsets.bottom = scrollViewBounds.size.height / 20
-//		scrollView.contentInset = scrollViewInsets
-//		scrollView.userInteractionEnabled = true
-//	}
-	// MARK: - Делегированные функции
+	// MARK: - Функции распознавания жестов
 	// MARK: -
 
 	func handleDoubleTap(recognizer: UITapGestureRecognizer)
@@ -90,111 +83,55 @@ class MapViewController: UIViewController, UIScrollViewDelegate
 	func handleTap(recognizer: UITapGestureRecognizer)
 	{
 		let p = recognizer.locationInView(ContentView)
-		println("gesture: \(p.x)  \(p.y)  \(recognizer.numberOfTapsRequired)")
+		
 		for i in 0..<pavilions.count
 		{
-			pavilions[i].PicV.backgroundColor = UIColor(red: 1, green: 0.6, blue: 0.2, alpha: 0.5)
+			pavilions[i].PicV.backgroundColor = pavilionsColor
 			if CGRectContainsPoint(pavilions[i].PicV.frame, p)
 			{
 				selectedItem = i
 			}
 		}
-		if selectedItem >= 0
+		if selectedItem >= 0	//	Выделяем новый объект
 		{
-			println("selectedItem: \(selectedItem)")
-			pavilions[selectedItem].PicV.backgroundColor = UIColor(red: 1, green: 0.4, blue: 0.2, alpha: 0.8)
+			pavilions[selectedItem].PicV.backgroundColor = pavilionSelectedColor
 			self.navigationItem.title = pavilions[selectedItem].Name
+			if scrollView.zoomScale > 1
+			{
+				let rect = CGRect(x: pavilions[selectedItem].PicV.frame.minX - pavilions[selectedItem].PicV.frame.width * 2, y: pavilions[selectedItem].PicV.frame.minY - pavilions[selectedItem].PicV.frame.height * 2, width: pavilions[selectedItem].PicV.frame.width * 5, height: pavilions[selectedItem].PicV.frame.height * 5)
+				scrollView.zoomToRect(rect, animated: true)
+			}
 		}
 	}
-//	func scrollViewDoubleTapped(recognizer: UITapGestureRecognizer) {
-//		// 1
-//		let pointInView = recognizer.locationInView(MapImageView)
-//		
-//		// 2
-//		var newZoomScale = scrollView.zoomScale * 1.5
-//		newZoomScale = min(newZoomScale, scrollView.maximumZoomScale)
-//		
-//		// 3
-//		let scrollViewSize = scrollView.bounds.size
-//		let w = scrollViewSize.width / newZoomScale
-//		let h = scrollViewSize.height / newZoomScale
-//		let x = pointInView.x - (w / 2.0)
-//		let y = pointInView.y - (h / 2.0)
-//		
-//		let rectToZoomTo = CGRectMake(x, y, w, h);
-//		
-//		// 4
-//		scrollView.zoomToRect(rectToZoomTo, animated: true)
-//	}
+	
+	// MARK: - Делегированные функции
+	// MARK: -
 	
 	func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView?
 	{
-		return ContentView	//MapImageView
+		return ContentView
 	}
 	
 	func scrollViewDidZoom(scrollView: UIScrollView)
 	{
-		centerScrollViewContents()
+//		centerScrollViewContents()
 	}
 	
 	// MARK: - Прочие функции
 	// MARK: -
 	
-	func setPavilionsPositions(size: CGSize)
+	func setPavilionsPositions(size: CGSize)	//	Позиционируем объекты в зависимости от size
 	{
 		let pscale = min(size.width / MapImageView.image!.size.width, size.height / MapImageView.image!.size.height)
 		
-		scrollView.minimumZoomScale = pscale
-		scrollView.maximumZoomScale = 5.0
-//		scrollView.zoomScale = 1.0
-		
 		let posMapX = (size.width - MapImageView.image!.size.width * pscale) / 2.0
-//
 		let posMapY = (size.height - MapImageView.image!.size.height * pscale) / 2.0
-		println("ContentView.subviews.count: \(ContentView.subviews.count)")
+
 		for i in 0..<pavilions.count
 		{
 			let X = pavilions[i].X * pscale + posMapX
 			let Y = pavilions[i].Y * pscale + posMapY
 			pavilions[i].PicV.center = CGPointMake(X, Y)
 		}
-		
-//		for i in 0..<pavilions.count
-//		{
-//			let X = (pavilions[i].X - pavilions[i].W / 2.0) * pscale + posMapX
-//			let Y = (pavilions[i].Y - pavilions[i].H / 2.0) * pscale + posMapY
-//			let W = pavilions[i].W * pscale
-//			let H = pavilions[i].H * pscale
-//			let rect = CGRect(x: 0, y: 0, width: W, height: H)
-//			let boxImage = UIImageView(frame: rect)
-//			boxImage.backgroundColor = UIColor(red: 1, green: 0.5, blue: 0.4, alpha: 0.4)
-//			if selectedItem == i
-//			{
-//				boxImage.backgroundColor = UIColor(red: 1, green: 0.3, blue: 0.2, alpha: 0.6)
-//			}
-//			println("boxImage: \(boxImage.frame.origin.x)  \(boxImage.frame.origin.y)  \(boxImage.layer.anchorPoint.x)  \(boxImage.layer.anchorPoint.y)")
-//			ContentView.addSubview(boxImage)
-//		}
-	}
-	
-	func centerScrollViewContents()
-	{
-		let boundsSize = scrollView.bounds.size
-		var contentsFrame = ContentView.frame
-		
-		if contentsFrame.size.width < boundsSize.width {
-			contentsFrame.origin.x = (boundsSize.width - contentsFrame.size.width) / 2.0
-		} else {
-			contentsFrame.origin.x = 0.0
-		}
-		
-		if contentsFrame.size.height < boundsSize.height {
-			contentsFrame.origin.y = (boundsSize.height - contentsFrame.size.height) / 2.0
-		} else {
-			contentsFrame.origin.y = 0.0
-		}
-		
-		ContentView.frame = contentsFrame
-		
 	}
 }

@@ -21,12 +21,15 @@
                                     <subviews>
                                         <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XzE-MU-AEl">
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <color key="backgroundColor" red="0.98815654478041948" green="0.98601398601398604" blue="0.93823754370629375" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
+                                    <color key="backgroundColor" red="0.98815654480000004" green="0.98601398600000001" blue="0.93823754370000001" alpha="1" colorSpace="calibratedRGB"/>
                                 </tableViewCellContentView>
+                                <color key="backgroundColor" red="0.98815654480000004" green="0.98601398600000001" blue="0.93823754370000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="Grq-fo-DN8" kind="show" identifier="ShowMap" id="Njv-6T-DNJ"/>
                                 </connections>
@@ -58,17 +61,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="phk-JY-aAL">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="phk-JY-aAL">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9pg-s2-tdQ">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="expo-map.png" translatesAutoresizingMaskIntoConstraints="NO" id="LPh-KO-nRm">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="expo-mapS.png" translatesAutoresizingMaskIntoConstraints="NO" id="LPh-KO-nRm">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                             </imageView>
                                         </subviews>
-                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" red="0.9982636252" green="1" blue="0.85542507160000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstItem="LPh-KO-nRm" firstAttribute="top" secondItem="9pg-s2-tdQ" secondAttribute="top" id="Lvo-pY-KZA"/>
                                             <constraint firstItem="LPh-KO-nRm" firstAttribute="leading" secondItem="9pg-s2-tdQ" secondAttribute="leading" id="dLm-A9-vnR"/>
@@ -77,6 +80,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" red="0.9982636252" green="1" blue="0.85542507160000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="9pg-s2-tdQ" secondAttribute="trailing" id="J9R-ZL-Vfu"/>
                                     <constraint firstAttribute="bottom" secondItem="9pg-s2-tdQ" secondAttribute="bottom" id="Tds-IN-5JK"/>
@@ -128,6 +132,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="expo-map.png" width="800" height="800"/>
+        <image name="expo-mapS.png" width="800" height="800"/>
     </resources>
 </document>

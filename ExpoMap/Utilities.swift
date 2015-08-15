@@ -50,6 +50,8 @@ func loadData() -> [Pavilion]	//	Загрузка исходных данных 
 				let rect = CGRect(x: p.X, y: p.Y, width: p.W, height: p.H)
 				p.PicV = UIImageView(frame: rect)
 				p.PicV.layer.zPosition = 10
+				p.PicV.layer.borderColor = UIColor(white: 0.3, alpha: 0.5).CGColor
+				p.PicV.layer.borderWidth = 0.3
 				pav.append(p)
 			}
 		}

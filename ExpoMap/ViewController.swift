@@ -18,14 +18,18 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		super.viewDidLoad()
 		
 		pavilions = loadData()	// Загружаем исходные данные
+		
+//		self.performSegueWithIdentifier("ShowMap", sender: self)	//	Можно сразу перейти к карте, если снять комментарий
 	}
 	
 	override func viewWillAppear(animated: Bool)
 	{
-		if selectedItem >= 0
+		if selectedItem >= 0	//	При возврате из карты приводим выбранную строку таблицы в соответствие с картой
 		{
 			let idx = NSIndexPath(forRow: selectedItem, inSection: 0)
-			Table.selectRowAtIndexPath(idx, animated: false, scrollPosition: UITableViewScrollPosition.None)
+			Table.selectRowAtIndexPath(idx, animated: false, scrollPosition: .Middle)
+			Table.scrollToRowAtIndexPath(
+				idx, atScrollPosition: .Middle, animated: false)
 		}
 	}
 	
@@ -41,16 +45,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 	{
 		let cell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath:indexPath) as! UITableViewCell
 		cell.textLabel!.text = pavilions[indexPath.row].Name
-		println(cell.textLabel!.text)
 		return cell
 	}
-	
-	
-//	func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-//	{
-//		selectedItem = indexPath.row
-//		println("row: \(selectedItem)")
-//	}
 	
 	// MARK: - Подготовка к переходу по Segue
 	// MARK: -
@@ -61,6 +57,8 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		{
 			let row = Table.indexPathForSelectedRow()?.row
 			selectedItem = (row == nil) ? -1 : row!
+
+			// Готовим заголовок для navigationBar карты
 			
 			if selectedItem >= 0
 			{
@@ -77,7 +75,5 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 		super.didReceiveMemoryWarning()
 		// Dispose of any resources that can be recreated.
 	}
-
-
 }
 

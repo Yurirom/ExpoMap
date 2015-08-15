@@ -15,8 +15,8 @@
 		DAB15DAA1B7F0617009BE8EA /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB15DA91B7F0617009BE8EA /* Classes.swift */; };
 		DAB15DAC1B7F1123009BE8EA /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB15DAB1B7F1123009BE8EA /* Utilities.swift */; };
 		DAB15DAF1B7F1D8E009BE8EA /* Config.txt in Resources */ = {isa = PBXBuildFile; fileRef = DAB15DAD1B7F1D8E009BE8EA /* Config.txt */; };
-		DAB15DB01B7F1D8E009BE8EA /* expo-map.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB15DAE1B7F1D8E009BE8EA /* expo-map.png */; };
 		DACEDE621B7F4D7000DB537E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACEDE611B7F4D7000DB537E /* MapViewController.swift */; };
+		DACEDE641B7FD5D500DB537E /* expo-mapS.png in Resources */ = {isa = PBXBuildFile; fileRef = DACEDE631B7FD5D500DB537E /* expo-mapS.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,8 +30,8 @@
 		DAB15DA91B7F0617009BE8EA /* Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
 		DAB15DAB1B7F1123009BE8EA /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		DAB15DAD1B7F1D8E009BE8EA /* Config.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Config.txt; sourceTree = "<group>"; };
-		DAB15DAE1B7F1D8E009BE8EA /* expo-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "expo-map.png"; sourceTree = "<group>"; };
 		DACEDE611B7F4D7000DB537E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		DACEDE631B7FD5D500DB537E /* expo-mapS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "expo-mapS.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,7 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				DAB15DAD1B7F1D8E009BE8EA /* Config.txt */,
-				DAB15DAE1B7F1D8E009BE8EA /* expo-map.png */,
+				DACEDE631B7FD5D500DB537E /* expo-mapS.png */,
 			);
 			name = Resources;
 			path = ../ExpoMap.xcodeproj;
@@ -156,8 +156,8 @@
 			files = (
 				DA3C3A5C1B7EA7770014C748 /* Main.storyboard in Resources */,
 				DA3C3A611B7EA7770014C748 /* LaunchScreen.xib in Resources */,
-				DAB15DB01B7F1D8E009BE8EA /* expo-map.png in Resources */,
 				DAB15DAF1B7F1D8E009BE8EA /* Config.txt in Resources */,
+				DACEDE641B7FD5D500DB537E /* expo-mapS.png in Resources */,
 				DA3C3A5E1B7EA7770014C748 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
