@@ -12,8 +12,11 @@
 		DA3C3A5C1B7EA7770014C748 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA3C3A5A1B7EA7770014C748 /* Main.storyboard */; };
 		DA3C3A5E1B7EA7770014C748 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA3C3A5D1B7EA7770014C748 /* Images.xcassets */; };
 		DA3C3A611B7EA7770014C748 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA3C3A5F1B7EA7770014C748 /* LaunchScreen.xib */; };
-		DA3C3A781B7EA8390014C748 /* expo-map.png in Resources */ = {isa = PBXBuildFile; fileRef = DA3C3A771B7EA8390014C748 /* expo-map.png */; };
-		DA3C3A7A1B7EA8BC0014C748 /* Config.txt in Resources */ = {isa = PBXBuildFile; fileRef = DA3C3A791B7EA8BC0014C748 /* Config.txt */; };
+		DAB15DAA1B7F0617009BE8EA /* Classes.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB15DA91B7F0617009BE8EA /* Classes.swift */; };
+		DAB15DAC1B7F1123009BE8EA /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB15DAB1B7F1123009BE8EA /* Utilities.swift */; };
+		DAB15DAF1B7F1D8E009BE8EA /* Config.txt in Resources */ = {isa = PBXBuildFile; fileRef = DAB15DAD1B7F1D8E009BE8EA /* Config.txt */; };
+		DAB15DB01B7F1D8E009BE8EA /* expo-map.png in Resources */ = {isa = PBXBuildFile; fileRef = DAB15DAE1B7F1D8E009BE8EA /* expo-map.png */; };
+		DACEDE621B7F4D7000DB537E /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DACEDE611B7F4D7000DB537E /* MapViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,8 +27,11 @@
 		DA3C3A5B1B7EA7770014C748 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DA3C3A5D1B7EA7770014C748 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		DA3C3A601B7EA7770014C748 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		DA3C3A771B7EA8390014C748 /* expo-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "expo-map.png"; sourceTree = "<group>"; };
-		DA3C3A791B7EA8BC0014C748 /* Config.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Config.txt; sourceTree = "<group>"; };
+		DAB15DA91B7F0617009BE8EA /* Classes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Classes.swift; sourceTree = "<group>"; };
+		DAB15DAB1B7F1123009BE8EA /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		DAB15DAD1B7F1D8E009BE8EA /* Config.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Config.txt; sourceTree = "<group>"; };
+		DAB15DAE1B7F1D8E009BE8EA /* expo-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "expo-map.png"; sourceTree = "<group>"; };
+		DACEDE611B7F4D7000DB537E /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,9 @@
 			children = (
 				DA3C3A561B7EA7770014C748 /* AppDelegate.swift */,
 				DA3C3A581B7EA7770014C748 /* ViewController.swift */,
+				DACEDE611B7F4D7000DB537E /* MapViewController.swift */,
+				DAB15DA91B7F0617009BE8EA /* Classes.swift */,
+				DAB15DAB1B7F1123009BE8EA /* Utilities.swift */,
 				DA3C3A5A1B7EA7770014C748 /* Main.storyboard */,
 				DA3C3A5D1B7EA7770014C748 /* Images.xcassets */,
 				DA3C3A5F1B7EA7770014C748 /* LaunchScreen.xib */,
@@ -80,8 +89,8 @@
 		DA3C3A761B7EA8070014C748 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				DA3C3A791B7EA8BC0014C748 /* Config.txt */,
-				DA3C3A771B7EA8390014C748 /* expo-map.png */,
+				DAB15DAD1B7F1D8E009BE8EA /* Config.txt */,
+				DAB15DAE1B7F1D8E009BE8EA /* expo-map.png */,
 			);
 			name = Resources;
 			path = ../ExpoMap.xcodeproj;
@@ -118,6 +127,7 @@
 				TargetAttributes = {
 					DA3C3A501B7EA7770014C748 = {
 						CreatedOnToolsVersion = 6.4;
+						DevelopmentTeam = XKXWN9C2LN;
 					};
 				};
 			};
@@ -146,8 +156,8 @@
 			files = (
 				DA3C3A5C1B7EA7770014C748 /* Main.storyboard in Resources */,
 				DA3C3A611B7EA7770014C748 /* LaunchScreen.xib in Resources */,
-				DA3C3A781B7EA8390014C748 /* expo-map.png in Resources */,
-				DA3C3A7A1B7EA8BC0014C748 /* Config.txt in Resources */,
+				DAB15DB01B7F1D8E009BE8EA /* expo-map.png in Resources */,
+				DAB15DAF1B7F1D8E009BE8EA /* Config.txt in Resources */,
 				DA3C3A5E1B7EA7770014C748 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -161,6 +171,9 @@
 			files = (
 				DA3C3A591B7EA7770014C748 /* ViewController.swift in Sources */,
 				DA3C3A571B7EA7770014C748 /* AppDelegate.swift in Sources */,
+				DAB15DAC1B7F1123009BE8EA /* Utilities.swift in Sources */,
+				DACEDE621B7F4D7000DB537E /* MapViewController.swift in Sources */,
+				DAB15DAA1B7F0617009BE8EA /* Classes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,6 +286,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ExpoMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -283,6 +297,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = ExpoMap/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -308,6 +323,7 @@
 				DA3C3A721B7EA7770014C748 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
